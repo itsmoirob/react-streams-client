@@ -5,12 +5,12 @@ import history from '../../history';
 import { fetchStream } from '../../actions';
 
 class StreamDelete extends Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchStream(this.props.match.params.id)
   }
 
 
-  renderActions(){
+  renderActions() {
     return (
       <Fragment>
         <button className="ui button negative">Delete</button>
@@ -20,8 +20,8 @@ class StreamDelete extends Component {
   }
 
 
-  renderContent(){
-    if(!this.props.stream) {
+  renderContent() {
+    if (!this.props.stream) {
       return 'Are you sure you want to delete this stream?';
     }
 
@@ -30,16 +30,12 @@ class StreamDelete extends Component {
 
   render() {
     return (
-      <div>
-        StreamDelete
-  
-        <Modal
-          title="Delete Stream"
-          content={this.renderContent()}
-          actions={this.renderActions()}
-          onDismiss={() => history.push('/')}
-        />
-      </div>
+      <Modal
+        title="Delete Stream"
+        content={this.renderContent()}
+        actions={this.renderActions()}
+        onDismiss={() => history.push('/')}
+      />
     )
   }
 }
@@ -52,4 +48,4 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-export default connect(mapStateToProps, {fetchStream})(StreamDelete);
+export default connect(mapStateToProps, { fetchStream })(StreamDelete);
